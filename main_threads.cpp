@@ -20,11 +20,8 @@ int main(int argc , char** argv , char** env){
         std::string number_of_pass;
         std::cout << "[***] Input number of passwords to generate: ";
         std::cin >> number_of_pass;
-        std::string sys_call = "Passwords\\scr_modules\\gen_reg.exe --reg " + std::string(param)  + " --num " + number_of_pass; 
-        system(sys_call.c_str());
-        std::string res = list_with_threads("Passwords\\tmp_regex.txt" , number);
-        std::cout << res;
-        std::filesystem::remove("Passwords\\tmp_regex.txt");
+        std::string result = thread_shit_with_regex(number , param , number_of_pass);
+        std::cout << result;
     }
     return 0;
 }
