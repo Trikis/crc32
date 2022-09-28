@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.2)
 set (CMAKE_CXX_STANDARD 17)
 
 
-
 project(i_hate_crc32)
 
 option(MultiThreading "MultiThreading" OFF)
@@ -32,29 +31,53 @@ add_subdirectory(
 )
 
 add_executable(
-    test_list
+    tests
     tests/crc32tests.cpp
 )
 
 target_include_directories(
-    test_list PUBLIC
+    tests PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/lib"
 )
 
+
 target_link_libraries(
-    test_list PRIVATE
-    gtest gtest_main
+    tests PRIVATE
+    gtest gtest_main 
 )
 
 if (MSVC)
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     target_compile_options(
-        test_list PRIVATE 
-        /W4
+            tests PRIVATE 
+            /W4
     )
+    if(MultiThreading)
+        target_compile_options(
+            i_hate_crc32_multithreading PRIVATE 
+            /W4
+        )
+    else()
+        target_compile_options(
+            i_hate_crc32 PRIVATE 
+            /W4
+        )
+    endif()
+
 else()
     target_compile_options(
-        test_list PRIVATE
+        tests PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
+    if(MultiThreading)
+        target_compile_options(
+            i_hate_crc32_multithreading PRIVATE 
+            -Wall -Wextra -pedantic -Werror
+        )
+    else()
+        target_compile_options(
+            i_hate_crc32 PRIVATE 
+            -Wall -Wextra -pedantic -Werror
+        )
+    endif()
 endif()
