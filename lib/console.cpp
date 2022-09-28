@@ -1,7 +1,15 @@
 #include <iostream>
 #include <utility>
 #include <stdint.h>
+
+
+enum InputType{
+    list , reg
+};
+
 typedef long long ll;
+typedef std::pair<std::pair<uint_least32_t , char*> , InputType> Args;
+
 
 unsigned char compare(const char* str1 ,const char* str2){
     int i = 0 ;
@@ -46,10 +54,10 @@ std::pair< char , uint_least32_t> to_number(const char* crc_string){
 }
 
 
-std::pair<uint_least32_t , char*> console(int argc , char** argv){
+Args console(int argc , char** argv){
 
     char res_str[] = "0xCAFEBABE";
-    std::pair<uint_least32_t , char*> bad_pair = std::make_pair(0 , res_str);
+    Args bad_pair = std::make_pair(std::make_pair(0 , res_str ) , InputType::list);
 
     if (argc == 1){
         std::cout<< "[-] Incorrect input. Use --help for more info" << std::endl;
@@ -74,6 +82,19 @@ std::pair<uint_least32_t , char*> console(int argc , char** argv){
         return bad_pair;
     }
 
+    if (compare(argv[1] , "--crc") && compare(argv[3] , "--reg")){
+        char* crc_string_number = argv[2];
+        char* reg = argv[4];
+        std::pair<char , uint_least32_t> tmp = to_number(crc_string_number);
+        char state = tmp.first;
+        uint_least32_t res = tmp.second;
+        if (state){
+            return std::make_pair(std::make_pair(res , reg) , InputType::reg);
+        }
+        std::cout << "[-] Incorrect crc number"<<std::endl;
+        return bad_pair;
+    }
+
     if (!(compare(argv[1], "--crc") && compare(argv[3], "--list"))){
         std::cout<< "[-] Incorrect input. Use --help for more info" << std::endl;
         return bad_pair;
@@ -85,7 +106,7 @@ std::pair<uint_least32_t , char*> console(int argc , char** argv){
     char state = tmp.first;
     uint_least32_t res = tmp.second;
     if (state){
-        return std::make_pair(res , file_path);
+        return std::make_pair(std::make_pair(res , file_path) , InputType::list);
     }
     std::cout << "[-] Incorrect crc number"<<std::endl;
     return bad_pair;
