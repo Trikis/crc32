@@ -14,14 +14,16 @@ int main(int argc , char** argv , char** env){
   }
   
   if (type == InputType::list){
-    list_without_thread(param ,number);
+      std::string res = list_without_thread(param ,number);
+      std::cout << res;
   }else{
       std::string number_of_pass;
       std::cout << "[***] Input number of passwords to generate: ";
       std::cin >> number_of_pass;
       std::string sys_call = "Passwords\\scr_modules\\gen_reg.exe --reg " + std::string(param)  + " --num " + number_of_pass; 
       system(sys_call.c_str());
-      list_without_thread("Passwords\\tmp_regex.txt" , number);
+      std::string result = list_without_thread("Passwords\\tmp_regex.txt" , number);
+      std::cout << result;
       std::filesystem::remove("Passwords\\tmp_regex.txt");
   }
   return 0;

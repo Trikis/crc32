@@ -8,9 +8,9 @@
 
 typedef long long ll;
 
-unsigned char list_without_thread(const char* file_path , uint_least32_t number);
+std::string list_without_thread(const char* file_path , uint_least32_t number);
 void clear_create_files();
-unsigned char list_with_threads(const char* file_path , uint_least32_t number);
+std::string list_with_threads(const char* file_path , uint_least32_t number);
 
 class Thread{
     private:
@@ -18,9 +18,10 @@ class Thread{
         std::thread* th;
         uint_least32_t number;
     public:
+        std::string res;
         Thread(const char* _file_path , uint_least32_t _number) : filepath(_file_path)  , number(_number){
             th = new std::thread([&](){
-                unsigned char res = list_without_thread(filepath , number);
+                res = list_without_thread(filepath , number);
             });
         }
         ~Thread(){
@@ -31,7 +32,7 @@ class Thread{
         }
 };
 
-unsigned char list_without_thread(const char* file_path , uint_least32_t number){ //func part
+std::string list_without_thread(const char* file_path , uint_least32_t number){ //func part
     std::fstream file(file_path , std::ios::in | std::ios::binary);
     if (!file.is_open()){
         std::cout << "[-] Can not open this file\n";
@@ -57,8 +58,7 @@ unsigned char list_without_thread(const char* file_path , uint_least32_t number)
             byte_arr[pos] = '\0';
             uint_least32_t temp_number = Crc32(byte_arr, pos);
             if (temp_number == number){
-                std::cout<<"COngratulations!!!  " << "Password is:" << byte_arr<< std::endl;
-                return 1;
+                return std::string((char*)byte_arr);
             }
             for (int i =0; i < 50 ; ++i){
                 byte_arr[i] = 0;
@@ -70,7 +70,7 @@ unsigned char list_without_thread(const char* file_path , uint_least32_t number)
         }
     }
     file.close();
-    return 0;
+    return "";
 }
 
 
@@ -83,11 +83,11 @@ void clear_create_files(){
 }
 
 
-unsigned char list_with_threads(const char* file_path , uint_least32_t number){
+std::string list_with_threads(const char* file_path , uint_least32_t number){
     std::fstream file(file_path , std::ios::in | std::ios::binary);
     if (!file.is_open()){
         std::cout << "[-] Can not open this file\n";
-        return 0;
+        return "";
     }
     file.seekg(0, std::ios::beg);
 
@@ -125,5 +125,9 @@ unsigned char list_with_threads(const char* file_path , uint_least32_t number){
     Thread th4("Passwords\\4.txt" , number);
     th1.join(); th2.join() ; th3.join() ; th4.join();
     clear_create_files();
-    return 0;
+    if (th1.res != "") return th1.res;
+    if (th2.res != "") return th2.res;
+    if (th3.res != "") return th3.res;
+    if (th4.res != "") return th4.res;
+    return "";
 }
