@@ -1,0 +1,16 @@
+C:/Users/admin/Desktop/crc32/build/CMakeFiles/crc32.dir
+C:/Users/admin/Desktop/crc32/build/CMakeFiles/i_hate_crc32.dir
+C:/Users/admin/Desktop/crc32/build/CMakeFiles/test_list.dir
+C:/Users/admin/Desktop/crc32/build/CMakeFiles/INSTALL.dir
+C:/Users/admin/Desktop/crc32/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/admin/Desktop/crc32/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/admin/Desktop/crc32/build/googletest/CMakeFiles/INSTALL.dir
+C:/Users/admin/Desktop/crc32/build/googletest/CMakeFiles/ALL_BUILD.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googlemock/CMakeFiles/gmock.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googlemock/CMakeFiles/gmock_main.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googlemock/CMakeFiles/INSTALL.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googlemock/CMakeFiles/ALL_BUILD.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googletest/CMakeFiles/gtest.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googletest/CMakeFiles/gtest_main.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googletest/CMakeFiles/INSTALL.dir
+C:/Users/admin/Desktop/crc32/build/googletest/googletest/CMakeFiles/ALL_BUILD.dir

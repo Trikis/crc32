@@ -1,0 +1,10 @@
+^C:\USERS\ADMIN\DESKTOP\CRC32\BUILD\CMAKEFILES\EDDFEB65407912CA12B2AFC04C5F8B0C\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/admin/Desktop/crc32 -BC:/Users/admin/Desktop/crc32/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/admin/Desktop/crc32/build/i_hate_crc32.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -35,8 +35,7 @@ class Thread{
 std::string list_without_thread(const char* file_path , uint_least32_t number){ //func part
     std::fstream file(file_path , std::ios::in | std::ios::binary);
     if (!file.is_open()){
-        std::cout << "[-] Can not open this file\n";
-        return 0;
+        return "[-] Can not open this file\n";
     }
     file.seekg(0, std::ios::beg);
 
@@ -86,8 +85,7 @@ void clear_create_files(){
 std::string list_with_threads(const char* file_path , uint_least32_t number){
     std::fstream file(file_path , std::ios::in | std::ios::binary);
     if (!file.is_open()){
-        std::cout << "[-] Can not open this file\n";
-        return "";
+        return  "[-] Can not open this file\n";
     }
     file.seekg(0, std::ios::beg);
 
