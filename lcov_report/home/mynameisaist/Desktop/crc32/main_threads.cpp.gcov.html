@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - min_threads.info - /home/mynameisaist/Desktop/crc32/main_threads.cpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../../index.html">top level</a> - <a href="index.html">home/mynameisaist/Desktop/crc32</a> - main_threads.cpp<span style="font-size: 80%;"> (source / <a href="main_threads.cpp.func-sort-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">min_threads.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">14</td>
+            <td class="headerCovTableEntry">18</td>
+            <td class="headerCovTableEntryMed">77.8 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2022-09-29 05:05:57</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryHi">100.0 %</td>
+          </tr>
+          <tr><td><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>            : #include &quot;lib/main_func.h&quot;</a>
+<a name="2"><span class="lineNum">       2 </span>            : #include &quot;lib/console.cpp&quot;</a>
+<a name="3"><span class="lineNum">       3 </span>            : </a>
+<a name="4"><span class="lineNum">       4 </span>            : </a>
+<a name="5"><span class="lineNum">       5 </span><span class="lineCov">          1 : int main(int argc , char** argv , char** env){</span></a>
+<a name="6"><span class="lineNum">       6 </span>            : </a>
+<a name="7"><span class="lineNum">       7 </span><span class="lineCov">          1 :   Args cons = console(argc , argv);</span></a>
+<a name="8"><span class="lineNum">       8 </span><span class="lineCov">          1 :   uint_least32_t number  = cons.first.first;</span></a>
+<a name="9"><span class="lineNum">       9 </span><span class="lineCov">          1 :   char* param = cons.first.second;</span></a>
+<a name="10"><span class="lineNum">      10 </span><span class="lineCov">          1 :   InputType type = cons.second;</span></a>
+<a name="11"><span class="lineNum">      11 </span>            : </a>
+<a name="12"><span class="lineNum">      12 </span><span class="lineCov">          1 :    if (compare(param , &quot;0xCAFEBABE&quot;) &amp;&amp; number == 0) {</span></a>
+<a name="13"><span class="lineNum">      13 </span><span class="lineNoCov">          0 :        return 0;</span></a>
+<a name="14"><span class="lineNum">      14 </span>            :     }</a>
+<a name="15"><span class="lineNum">      15 </span>            : </a>
+<a name="16"><span class="lineNum">      16 </span><span class="lineCov">          1 :     if (type == InputType::list){</span></a>
+<a name="17"><span class="lineNum">      17 </span><span class="lineNoCov">          0 :         std::string res = list_with_threads(param ,number);</span></a>
+<a name="18"><span class="lineNum">      18 </span><span class="lineNoCov">          0 :         std::cout &lt;&lt; res;</span></a>
+<a name="19"><span class="lineNum">      19 </span><span class="lineNoCov">          0 :     } else{</span></a>
+<a name="20"><span class="lineNum">      20 </span><span class="lineCov">          1 :         std::string number_of_pass;</span></a>
+<a name="21"><span class="lineNum">      21 </span><span class="lineCov">          1 :         std::cout &lt;&lt; &quot;[***] Input number of passwords to generate: &quot;;</span></a>
+<a name="22"><span class="lineNum">      22 </span><span class="lineCov">          1 :         std::cin &gt;&gt; number_of_pass;</span></a>
+<a name="23"><span class="lineNum">      23 </span><span class="lineCov">          1 :         std::string result = thread_shit_with_regex(number , param , number_of_pass);</span></a>
+<a name="24"><span class="lineNum">      24 </span><span class="lineCov">          1 :         std::cout &lt;&lt; result;</span></a>
+<a name="25"><span class="lineNum">      25 </span><span class="lineCov">          1 :     }</span></a>
+<a name="26"><span class="lineNum">      26 </span><span class="lineCov">          1 :     return 0;</span></a>
+<a name="27"><span class="lineNum">      27 </span>            : }</a>
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="https://github.com/linux-test-project/lcov" target="_parent">LCOV version 1.16</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>
