@@ -1,4 +1,4 @@
-#include "lib/main_func.cpp"
+#include "lib/main_func.h"
 #include "lib/console.cpp"
 
 
