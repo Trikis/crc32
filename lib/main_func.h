@@ -130,7 +130,7 @@ std::string list_with_threads(const char* file_path , uint_least32_t number){
     return "";
 }
 
-std::string shit_with_regex(uint_least32_t number , char* regex , std::string number_of_pass){
+std::string shit_with_regex(uint_least32_t number ,const char* regex , std::string number_of_pass){
     std::string sys_call = "Passwords\\scr_modules\\gen_reg.exe --reg " + std::string(regex)  + " --num " + number_of_pass; 
     system(sys_call.c_str());
     std::string result = list_without_thread("Passwords\\tmp_regex.txt" , number);
@@ -138,7 +138,7 @@ std::string shit_with_regex(uint_least32_t number , char* regex , std::string nu
     return result;
 }
 
-std::string thread_shit_with_regex(uint_least32_t number , char* regex , std::string number_of_pass){
+std::string thread_shit_with_regex(uint_least32_t number ,const char* regex , std::string number_of_pass){
     std::string sys_call = "Passwords\\scr_modules\\gen_reg.exe --reg " + std::string(regex)  + " --num " + number_of_pass; 
     system(sys_call.c_str());
     std::string result = list_with_threads("Passwords\\tmp_regex.txt" , number);

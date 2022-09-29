@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../lib/main_func.h"
+#include "../lib/console.cpp"
 
 
 TEST(Password_from_list , no_threading_version_file_with_passwords_exists){
@@ -49,3 +50,20 @@ TEST(Password_from_list , threading_version_file_with_passwords_exists_no_matche
 }
 
 
+TEST(Passwords_from_regex , no_threading_version){
+    std::string res1 = shit_with_regex(2724056820 , "[A-Z]{4}ETHISLABA" , "50000000"); // exists "IHATETHISLABA"
+    std::string res2 = shit_with_regex(318978690 , "[a-z]{1}lkhjasdfhsldkgfhs4irg" , "1"); //exists ""
+
+    ASSERT_EQ(res1 , "IHATETHISLABA");
+    ASSERT_EQ(res2 , "");
+}
+
+TEST(Passwords_from_regex , threading_version){
+    std::string res1 = thread_shit_with_regex(2724056820 , "[A-Z]{4}ETHISLABA" , "50000000"); // exists "IHATETHISLABA"
+    std::string res2 = thread_shit_with_regex(318978690 , "[a-z]{1}lkhjasdfhsldkgfhs4irg" , "1"); //exists ""
+
+    ASSERT_EQ(res1 , "IHATETHISLABA");
+    ASSERT_EQ(res2 , "");
+}
+
+//Консоль тестировать не буду, она и так рабочая а работяги дофига
